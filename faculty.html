@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Dashboard - PermitX</title>
+    <link rel="stylesheet" href="assets/css/faculty.css">
+</head>
+<body onload="initPage()">
+
+    <div class="navbar">
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <img src="assets/images/permitx-logo3.avif" style="height: 40px;">
+            <span class="brand">PermitX</span>
+        </div>
+        <button onclick="logout()" class="logout-btn">Logout</button>
+    </div>
+
+    <div class="container">
+        <h2>Faculty Dashboard</h2>
+
+        <div class="card dashboard">
+            <div class="box">Total <span id="totalCount">0</span></div>
+            <div class="box">PENDING <span id="pendingCount">0</span></div>
+            <div class="box">APPROVED <span id="approvedCount">0</span></div>
+            <div class="box">REJECTED <span id="rejectedCount">0</span></div>
+        </div>
+
+        <div class="card filter-row">
+            <div class="filter-group">
+                <label>Department</label>
+                <select id="department">
+                    <option value="">All Departments</option>
+                    <option value="ECE">ECE</option>
+                    <option value="CSE">CSE</option>
+                    <option value="MECH">MECH</option>
+                    <option value="EEE">EEE</option>
+                    <option value="CIVIL">CIVIL</option>
+                    <option value="IT">IT</option>
+                    <option value="AIML">AIML</option>
+                    <option value="DS">DS</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Section</label>
+                <select id="section">
+                    <option value="">All Sections</option>
+                    <!-- ✅ FIX: section C was value="c" lowercase — now uppercase -->
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                    <option value="G">G</option>
+                    <option value="H">H</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Status</label>
+                <select id="status">
+                    <option value="">All Status</option>
+                    <option value="PENDING">PENDING</option>
+                    <option value="REJECTED">REJECTED</option>
+                    <option value="APPROVED">APPROVED</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Roll No</label>
+                <input type="text" id="studentRollNo" placeholder="Roll No">
+            </div>
+
+            <div class="filter-group button-group">
+                <button onclick="loadLeaves(0)" class="filter-btn">Search</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Student</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Session</th>
+                        <th>Status</th>
+                        <th>View</th>
+                    </tr>
+                </thead>
+                <tbody id="leaveTable"></tbody>
+            </table>
+            <div id="pagination"></div>
+        </div>
+    </div>
+
+    <div id="letterModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3>Leave Letter</h3>
+            <p id="letterText"></p>
+        </div>
+    </div>
+
+    <div id="loader" class="loader-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/faculty.js"></script>
+</body>
+</html>
