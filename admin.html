@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - PermitX</title>
+    <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-left">
+            <img src="assets/images/permitx-logo.svg" class="logo">
+            <span class="brand">PermitX Admin</span>
+        </div>
+        <button onclick="logout()" class="logout-btn">Logout</button>
+    </div>
+
+    <div class="container" style="flex-direction:column; gap:20px; padding:30px;">
+
+        <!-- Upload Users -->
+        <div class="card">
+            <h2>📂 Upload Users (CSV)</h2>
+            <p style="font-size:13px; color:#777; margin-bottom:15px;">
+                CSV format: <strong>name, username, role, department, section, phone</strong>
+            </p>
+            <input type="file" id="fileInput" accept=".csv" hidden>
+            <label for="fileInput" class="file-label">Choose CSV File</label>
+            <span id="fileName">No file chosen</span>
+            <button onclick="uploadFile()" class="upload-btn">Upload</button>
+            <p id="message" style="margin-top:10px; font-weight:bold;"></p>
+        </div>
+
+        <!-- ✅ FEATURE 3: Reset Password Card -->
+        <div class="card">
+            <h2>🔑 Reset Student Password</h2>
+            <p style="font-size:13px; color:#777; margin-bottom:15px;">
+                Enter the student's Roll No to reset their password back to <strong>1234</strong>.
+                They will be asked to set a new password on next login.
+            </p>
+            <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+                <input type="text" id="resetUsername"
+                    placeholder="Enter Roll No (e.g. 21CS001)"
+                    style="padding:10px; border:1px solid #ccc; border-radius:6px;
+                           font-size:14px; min-width:220px; flex:1;">
+                <button onclick="resetPassword()" class="upload-btn">Reset Password</button>
+            </div>
+            <p id="resetMessage" style="margin-top:10px; font-weight:bold;"></p>
+        </div>
+
+    </div>
+
+    <div id="loader" class="loader-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/admin.js"></script>
+</body>
+</html>
